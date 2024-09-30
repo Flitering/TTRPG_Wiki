@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Персонажи</h2>
+<ul>
+    {% for character in characters %}
+    <li><a href="{% url 'character_detail' character.id %}">{{ character.name }}</a> — {{ character.race }} {{ character.character_class }}</li>
+    {% empty %}
+    <li>Персонажей пока нет.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'create_character' %}">Создать персонажа</a>
+{% endblock %}

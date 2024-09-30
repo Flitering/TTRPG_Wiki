@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Материалы</h2>
+<ul>
+    {% for material in materials %}
+    <li><a href="{% url 'material_detail' material.id %}">{{ material.title }}</a> — {{ material.author }}</li>
+    {% empty %}
+    <li>Материалов пока нет.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_material' %}">Добавить материал</a>
+{% endblock %}

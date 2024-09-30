@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{ character.name }}</h2>
+<p><strong>Раса:</strong> {{ character.race }}</p>
+<p><strong>Класс:</strong> {{ character.character_class }}</p>
+<p><strong>Уровень:</strong> {{ character.level }}</p>
+<p><strong>Атрибуты:</strong> {{ character.attributes }}</p>
+<a href="{% url 'character_list' %}">Вернуться к списку персонажей</a>
+{% endblock %}
