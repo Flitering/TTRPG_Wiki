@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 
+{% block title %}Главная{% endblock %}
+
 {% block content %}
-<h2>Добро пожаловать на Pathfinder Portal!</h2>
-<p>Здесь вы можете читать материалы, создавать персонажей и изучать правила игры.</p>
+<div class="jumbotron">
+    <h2 class="display-4">Добро пожаловать на Pathfinder Portal!</h2>
+    <p class="lead">Исследуйте материалы, создавайте персонажей и изучайте правила игры.</p>
+    <hr class="my-4">
+    <p>Начните с изучения наших материалов или создайте собственного персонажа.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'material_list' %}" role="button">Материалы</a>
+    <a class="btn btn-success btn-lg" href="{% url 'create_character' %}" role="button">Создать персонажа</a>
+</div>
 {% endblock %}

@@ -1,10 +1,46 @@
 {% extends 'base.html' %}
 
+{% block title %}{{ character.name }}{% endblock %}
+
 {% block content %}
 <h2>{{ character.name }}</h2>
 <p><strong>Раса:</strong> {{ character.race }}</p>
 <p><strong>Класс:</strong> {{ character.character_class }}</p>
 <p><strong>Уровень:</strong> {{ character.level }}</p>
-<p><strong>Атрибуты:</strong> {{ character.attributes }}</p>
-<a href="{% url 'character_list' %}">Вернуться к списку персонажей</a>
+
+<h3>Атрибуты</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Сила (STR)</th>
+        <td>{{ character.strength }}</td>
+    </tr>
+    <tr>
+        <th>Ловкость (DEX)</th>
+        <td>{{ character.dexterity }}</td>
+    </tr>
+    <tr>
+        <th>Телосложение (CON)</th>
+        <td>{{ character.constitution }}</td>
+    </tr>
+    <tr>
+        <th>Интеллект (INT)</th>
+        <td>{{ character.intelligence }}</td>
+    </tr>
+    <tr>
+        <th>Мудрость (WIS)</th>
+        <td>{{ character.wisdom }}</td>
+    </tr>
+    <tr>
+        <th>Харизма (CHA)</th>
+        <td>{{ character.charisma }}</td>
+    </tr>
+</table>
+
+<a href="{% url 'edit_character' character.id %}" class="btn btn-primary">
+    <i class="fas fa-edit"></i> Редактировать
+</a>
+<a href="{% url 'delete_character' character.id %}" class="btn btn-danger">
+    <i class="fas fa-trash-alt"></i> Удалить
+</a>
+<a href="{% url 'character_list' %}" class="btn btn-secondary">Назад к списку</a>
 {% endblock %}

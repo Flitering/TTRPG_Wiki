@@ -1,13 +1,30 @@
 {% extends 'base.html' %}
 
+{% block title %}Материалы{% endblock %}
+
 {% block content %}
-<h2>Материалы</h2>
-<ul>
+<h2><i class="fas fa-book"></i> Материалы</h2>
+<div class="row">
     {% for material in materials %}
-    <li><a href="{% url 'material_detail' material.id %}">{{ material.title }}</a> — {{ material.author }}</li>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ material.title }}</h5>
+                    <p class="card-text">
+                        <i class="fas fa-user"></i> {{ material.author }} <br>
+                        <i class="fas fa-calendar-alt"></i> {{ material.created_at|date:"d.m.Y" }}
+                    </p>
+                    <a href="{% url 'material_detail' material.id %}" class="btn btn-primary">
+                        <i class="fas fa-book-open"></i> Читать далее
+                    </a>
+                </div>
+            </div>
+        </div>
     {% empty %}
-    <li>Материалов пока нет.</li>
+        <p>Материалов пока нет.</p>
     {% endfor %}
-</ul>
-<a href="{% url 'add_material' %}">Добавить материал</a>
+</div>
+<a href="{% url 'add_material' %}" class="btn btn-success mt-3">
+    <i class="fas fa-plus"></i> Добавить материал
+</a>
 {% endblock %}

@@ -4,9 +4,15 @@
 <h2>Персонажи</h2>
 <ul>
     {% for character in characters %}
-    <li><a href="{% url 'character_detail' character.id %}">{{ character.name }}</a> — {{ character.race }} {{ character.character_class }}</li>
-    {% empty %}
-    <li>Персонажей пока нет.</li>
+    <!-- Данные персонажа -->
+    <a href="{% url 'character_detail' character.id %}">{{ character.name }}</a>
+    <!-- Кнопки редактирования и удаления -->
+    <a href="{% url 'edit_character' character.id %}" class="btn btn-sm btn-primary">
+        <i class="fas fa-edit"></i>
+    </a>
+    <a href="{% url 'delete_character' character.id %}" class="btn btn-sm btn-danger">
+        <i class="fas fa-trash-alt"></i>
+    </a>
     {% endfor %}
 </ul>
 <a href="{% url 'create_character' %}">Создать персонажа</a>

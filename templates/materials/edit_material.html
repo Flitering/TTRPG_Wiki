@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Редактировать материал{% endblock %}
+
+{% block content %}
+<h2>Редактировать материал</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+    <a href="{% url 'material_detail' material.id %}" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}

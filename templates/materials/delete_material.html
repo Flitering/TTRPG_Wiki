@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Удалить материал{% endblock %}
+
+{% block content %}
+<h2>Удалить материал</h2>
+<p>Вы уверены, что хотите удалить материал "{{ material.title }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a href="{% url 'material_detail' material.id %}" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}
