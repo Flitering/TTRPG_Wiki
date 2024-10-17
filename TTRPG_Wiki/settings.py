@@ -121,19 +121,26 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# Установите код языка на русский
+LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
-
+# Включите интернационализацию
 USE_I18N = True
 
+# Включите локализацию
+USE_L10N = True
+
+# Включите часовой пояс (опционально)
 USE_TZ = True
+
+# Установите часовой пояс (если требуется)
+TIME_ZONE = 'Europe/Moscow'
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Default primary key field type

@@ -48,3 +48,12 @@ def delete_character(request, id):
         character.delete()
         return redirect('character_list')
     return render(request, 'characters/delete_character.html', {'character': character})
+
+def character_list(request):
+    query = request.GET.get('q')
+    if query:
+        characters = Character.objects.filter(name__icontains=query)
+    else:
+        characters = Character.objects.all()
+    return render(request, 'characters/character_list.html', {'characters': characters})
+

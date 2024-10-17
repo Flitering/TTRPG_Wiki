@@ -1,19 +1,42 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Персонажи{% endblock %}
 
 {% block content %}
-<h2>Персонажи</h2>
-<ul>
+<h2><i class="fas fa-users"></i> Персонажи</h2>
+<div class="row">
     {% for character in characters %}
-    <!-- Данные персонажа -->
-    <a href="{% url 'character_detail' character.id %}">{{ character.name }}</a>
-    <!-- Кнопки редактирования и удаления -->
-    <a href="{% url 'edit_character' character.id %}" class="btn btn-sm btn-primary">
-        <i class="fas fa-edit"></i>
-    </a>
-    <a href="{% url 'delete_character' character.id %}" class="btn btn-sm btn-danger">
-        <i class="fas fa-trash-alt"></i>
-    </a>
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <!-- Изображение персонажа (если есть) -->
+                <!-- <img src="{{ character.image.url }}" class="card-img-top" alt="{{ character.name }}"> -->
+                <div class="card-body">
+                    <h5 class="card-title">{{ character.name }}</h5>
+                    <p class="card-text">
+                        <strong>Раса:</strong> {{ character.race }}<br>
+                        <strong>Класс:</strong> {{ character.character_class }}<br>
+                        <strong>Уровень:</strong> {{ character.level }}
+                    </p>
+                    <a href="{% url 'character_detail' character.id %}" class="btn btn-primary">
+                        <i class="fas fa-user"></i> Подробнее
+                    </a>
+                </div>
+                <div class="card-footer text-muted">
+                    <a href="{% url 'edit_character' character.id %}" class="btn btn-sm btn-secondary">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{% url 'delete_character' character.id %}" class="btn btn-sm btn-danger">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>Персонажей пока нет.</p>
     {% endfor %}
-</ul>
-<a href="{% url 'create_character' %}">Создать персонажа</a>
+</div>
+<a href="{% url 'create_character' %}" class="btn btn-success mt-3">
+    <i class="fas fa-plus"></i> Создать персонажа
+</a>
 {% endblock %}
